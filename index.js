@@ -1,41 +1,34 @@
-const book = document.getElementById("book");
+const book = document.getElementById('book');
 
+const imgElement = document.getElementById('book-image');
+const authorElement = document.getElementById('book-author');
+const yearElement = document.getElementById('book-year');
+const titleElement = document.getElementById('book-title');
 
+fetch('https://romyleads.github.io/my-favorite-book/book.json')
+	//  Promise<res>
+	.then(res => {
+		//
+		if (res.status === 404) {
+			titleElement.textContent = 'not found message';
+			throw new Error('not found message');
+		}
+		if (res.ok) {
+			return res.json();
+		} else {
+			throw new Error('Something went wrong');
+		}
+	})
+	.then(data => {
+		console.log(data);
+		const { title, src } = data;
 
-
-fetch("https://alisherkhamidov.github.io/fake-pirate/joe-sparrow.json")
-  //  Promise<res>
-  .then((res) => {
-    // console.log(res.status);
-    // console.log(res.ok); //
-    // console.log(res);
-    if (res.status === 404) {
-      throw new Error("Custom not found message");
-    }
-    // .json() - распарсит json
-    // .text() - вернул строку json как есть - с кавычками
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw new Error("Something went wrong");
-    }
-  })
-  .then((data) => {
-    console.log(data); // ОБЯЗАТЕЛЬНО ПОСМОТРИТЕ ЧЕМ ЯВЛЯЕТСЯ ТЕЛО ОТВЕТА
-    const { name, url } = data;
-    heading.innerText = name;
-		imgPirate.src = url;
-		imgPirate.style.width = "200px";	
-		favDrinkElement.innerText = data.favouriteDrink;
-
-
-		data.parrots.forEach((parrot) => {
-			const parrotElement = document.createElement("li");
-			parrotElement.innerText = parrot.name;
-			parrotsContainer.appendChild(parrotElement);
-		});
-
-  })
-  .catch((err) => {
-    console.log(err.message); // Custom not found message
-  });
+		titleElement.textContent = title;
+		imgElement.src = src;
+		authorElement.textContent = `Author: ${data.author}`;
+		yearElement.textContent = `Year: ${data.year}`;
+		yearElement.style.fontWeight = 'bold';
+	})
+	.catch(err => {
+		console.log(err.message); // Custom not found message
+	});
