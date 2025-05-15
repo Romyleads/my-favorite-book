@@ -25,8 +25,8 @@ fetch('https://romyleads.github.io/my-favorite-book/book.json')
 
 		titleElement.textContent = title;
 		imgElement.src = src;
-    imgElement.alt = title;
-    imgElement.style.width = '200px';
+		imgElement.alt = title;
+		imgElement.style.width = '200px';
 		authorElement.textContent = `Author: ${data.author}`;
 		yearElement.textContent = `Year: ${data.year}`;
 		yearElement.style.fontWeight = 'bold';
