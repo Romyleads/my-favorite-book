@@ -1,0 +1,15 @@
+#book-image {
+	width: 300px;
+	display: block;
+	margin: 0 auto;
+	box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+#book-title {
+	text-transform: uppercase;
+	font-size: 24px;
+}
+
+#book-author {
+	font-style: italic;
+}
