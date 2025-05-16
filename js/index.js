@@ -1,5 +1,5 @@
 const title = document.getElementById("title");
-const age = document.getElementById("age");
+const ageElement = document.getElementById("age");
 const foodsContiner = document.getElementById("foods-continer");
 const drinksContainer = document.getElementById("drinks-container");
 
@@ -16,6 +16,23 @@ throw new Error('Something went wrong')
 .then(
 (obj) => {
   console.log(obj);
+const { firstName,secondName, favFoods, favDrinks, age} = obj;
+title.innerText = `${firstName} ${secondName}`;
+ageElement.innerText = age;
+
+favFoods.forEach((food) => {
+  const li = document.createElement("li");
+  li.innerText = food;
+  foodsContiner.appendChild(li);
+});
+
+favDrinks.forEach((drink) => {
+  const drinkElement = document.createElement("div");
+  drinkElement.innerText = drink;
+  drinksContainer.appendChild(drinkElement);
+});
+
+
 }
 
 )
