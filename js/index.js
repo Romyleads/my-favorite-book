@@ -16,7 +16,7 @@ throw new Error('Something went wrong')
 .then(
 (obj) => {
   console.log(obj);
-const { firstName,secondName, favFoods, favDrinks, age} = obj;
+const { firstName, secondName, favFoods, favDrinks, age} = obj;
 title.innerText = `${firstName} ${secondName}`;
 ageElement.innerText = age;
 
